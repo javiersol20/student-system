@@ -31,7 +31,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini login-page">
+<body class="hold-transition skin-black-light sidebar-mini login-page">
 <!-- Site wrapper -->
 
 <?php
@@ -39,23 +39,24 @@ if (isset($_SESSION["Ingresar"]) && $_SESSION["Ingresar"] == true) {
     echo '<div class="wrapper">';
     include "modules/header.php";
 
-    if ($_SESSION["rol"] == "Administrador") {
+    if ($_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Desarrollador") {
         include "modules/sidebar.php";
     }
     $url = [];
 
     if (isset($_GET["url"])) {
         $url = explode("/", $_GET["url"]);
-        if ($url[0] == "inicio") {
-            include "Modules/" . $url[0] . ".php";
+        if ($url[0] == "inicio" || $url[0] == "logout" || $url[0] == "mi-perfil") {
+            include "modules/" . $url[0] . ".php";
         }
 
     } else {
         include "modules/inicio.php";
     }
     echo '</div>';
-} elseif (isset($_GET["url"])) {
+} if (isset($_GET["url"])) {
     if ($_GET["url"] == "Ingresar") {
+
         include "modules/Ingresar.php";
     }
 } else {
