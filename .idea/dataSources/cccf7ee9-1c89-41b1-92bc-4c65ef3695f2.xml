@@ -1081,86 +1081,112 @@
       <ObjectGrants>ALL PRIVILEGES!
 </ObjectGrants>
     </user>
-    <table id="344" parent="16" name="usuarios"/>
-    <column id="345" parent="344" name="id">
+    <table id="344" parent="16" name="carreras"/>
+    <table id="345" parent="16" name="usuarios"/>
+    <column id="346" parent="344" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="346" parent="344" name="id_carrera">
+    <column id="347" parent="344" name="nombre">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="347" parent="344" name="libreta">
-      <Position>3</Position>
-      <DataType>varchar(150)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="348" parent="344" name="clave">
-      <Position>4</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="349" parent="344" name="nombre">
-      <Position>5</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="350" parent="344" name="apellido">
-      <Position>6</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="351" parent="344" name="fechanac">
-      <Position>7</Position>
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="352" parent="344" name="direccion">
-      <Position>8</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="353" parent="344" name="telefono">
-      <Position>9</Position>
-      <DataType>int(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="354" parent="344" name="correo">
-      <Position>10</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="355" parent="344" name="pais">
-      <Position>11</Position>
-      <DataType>varchar(150)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="356" parent="344" name="preparatoria">
-      <Position>12</Position>
-      <DataType>varchar(150)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="357" parent="344" name="rol">
-      <Position>13</Position>
-      <DataType>varchar(150)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="358" parent="344" name="uq_correo">
-      <ColNames>correo</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="359" parent="344" name="PRIMARY">
+    <key id="348" parent="344" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="360" parent="344" name="uq_correo">
+    <column id="349" parent="345" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="350" parent="345" name="id_carrera">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="351" parent="345" name="libreta">
+      <Position>3</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="352" parent="345" name="clave">
+      <Position>4</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="353" parent="345" name="nombre">
+      <Position>5</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="354" parent="345" name="apellido">
+      <Position>6</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="355" parent="345" name="fechanac">
+      <Position>7</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="356" parent="345" name="direccion">
+      <Position>8</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="357" parent="345" name="telefono">
+      <Position>9</Position>
+      <DataType>int(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="358" parent="345" name="correo">
+      <Position>10</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="359" parent="345" name="pais">
+      <Position>11</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="360" parent="345" name="preparatoria">
+      <Position>12</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="361" parent="345" name="rol">
+      <Position>13</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="362" parent="345" name="uq_correo">
+      <ColNames>correo</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="363" parent="345" name="fk_usuarios_carrera">
+      <ColNames>id_carrera</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="364" parent="345" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="365" parent="345" name="uq_correo">
       <ColNames>correo</ColNames>
       <UnderlyingIndexName>uq_correo</UnderlyingIndexName>
     </key>
+    <foreign-key id="366" parent="345" name="fk_usuarios_carrera">
+      <ColNames>id_carrera</ColNames>
+      <RefTableName>carreras</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>
