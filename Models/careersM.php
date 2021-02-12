@@ -5,7 +5,7 @@ require_once "ConnectionDB.php";
 class CareersM extends ConnectionDB {
 
     //Crear Carrera
-    static public function CrearCarreraM($tablaBD, $carrera){
+    static public function CreateCareersM($tablaBD, $carrera){
 
         $pdo = ConnectionDB::cDB()->prepare("INSERT INTO $tablaBD (nombre) VALUES (:nombre)");
 
@@ -25,7 +25,7 @@ class CareersM extends ConnectionDB {
 
 
     //Ver Carreras
-    static public function VerCarrerasM($tablaBD){
+    static public function ViewCareersM($tablaBD){
 
         $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD");
 
@@ -41,7 +41,7 @@ class CareersM extends ConnectionDB {
 
 
     //Editar Carreras
-    static public function EditarCarreraM($tablaBD, $id){
+    static public function EditCareersM($tablaBD, $id){
 
         $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD WHERE id = :id");
 
@@ -59,7 +59,7 @@ class CareersM extends ConnectionDB {
 
 
     //Actualizar Carreras
-    static public function ActualizarCarrerasM($tablaBD, $datosC){
+    static public function UpdateCareersM($tablaBD, $datosC){
 
         $pdo = ConnectionDB::cDB()->prepare("UPDATE $tablaBD SET nombre = :nombre WHERE id = :id");
 
@@ -78,7 +78,7 @@ class CareersM extends ConnectionDB {
 
 
     //Borrar Carreras
-    static public function BorrarCarrerasM($tablaBD, $id){
+    static public function DeleteCareersM($tablaBD, $id){
 
         $pdo = ConnectionDB::cDB()->prepare("DELETE FROM $tablaBD WHERE id = :id");
 

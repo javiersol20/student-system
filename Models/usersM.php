@@ -63,4 +63,13 @@ class UsersM extends ConnectionDB
         $pdo -> close();
         $pdo = null;
     }
+    static public function GetUsersM($tablaBD1,$tablaBD2)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("SELECT u.id,u.nombre,u.apellido,u.rol, u.libreta, u.clave, c.nombre AS 'carrera'
+                                                   FROM $tablaBD1 AS u INNER JOIN $tablaBD2 AS c ON c.id = u.id_carrera");
+        $pdo->execute();
+        return $pdo->fetchAll();
+        $pdo->close();
+        $pdo = null;
+    }
 }

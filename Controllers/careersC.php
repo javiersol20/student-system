@@ -3,7 +3,7 @@
 class CareersC{
 
     //Crear Carrera
-    public function CrearCarreraC(){
+    public function CreateCareersC(){
 
         if(isset($_POST["carrera"])){
 
@@ -11,7 +11,7 @@ class CareersC{
 
             $carrera = $_POST["carrera"];
 
-            $resultado = CareersM::CrearCarreraM($tablaBD, $carrera);
+            $resultado = CareersM::CreateCareersM($tablaBD, $carrera);
 
             if($resultado == true){
 
@@ -30,11 +30,11 @@ class CareersC{
 
 
     //Ver Carreras
-    public function VerCarrerasC(){
+    public function ViewCareersC(){
 
         $tablaBD = "carreras";
 
-        $resultado = CareersM::VerCarrerasM($tablaBD);
+        $resultado = CareersM::ViewCareersM($tablaBD);
 
         return $resultado;
 
@@ -43,7 +43,7 @@ class CareersC{
 
 
     //Editar Carrera
-    public function EditarCarreraC(){
+    public function EditCareersC(){
 
         $tablaBD = "carreras";
 
@@ -51,7 +51,7 @@ class CareersC{
 
         $id = $exp[1];
 
-        $resultado = CareersM::EditarCarreraM($tablaBD, $id);
+        $resultado = CareersM::EditCareersM($tablaBD, $id);
 
         echo '<div class="col-md-6 col-xs-12">
 						
@@ -69,7 +69,7 @@ class CareersC{
 
 
     //Actualizar Carreras
-    public function ActualizarCarrerasC(){
+    public function UpdateCareersC(){
 
         if(isset($_POST["carrera"])){
 
@@ -77,7 +77,7 @@ class CareersC{
 
             $datosC = array("id"=>$_POST["Cid"], "carrera"=>$_POST["carrera"]);
 
-            $resultado = CareersM::ActualizarCarrerasM($tablaBD, $datosC);
+            $resultado = CareersM::UpdateCareersM($tablaBD, $datosC);
 
             if($resultado == true){
 
@@ -96,7 +96,7 @@ class CareersC{
 
 
     //Borrar Carreras
-    public function BorrarCarrerasC(){
+    public function DeleteCareersC(){
 
         $exp = explode("/", $_GET["url"]);
 
@@ -106,7 +106,7 @@ class CareersC{
 
             $tablaBD = "carreras";
 
-            $resultado = CareersM::BorrarCarrerasM($tablaBD, $id);
+            $resultado = CareersM::DeleteCareersM($tablaBD, $id);
 
             if($resultado == true){
 

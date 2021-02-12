@@ -34,8 +34,8 @@ if($_SESSION["rol"] != "Administrador"){
                     <?php
 
                     $editarCarrera = new CareersC();
-                    $editarCarrera -> EditarCarreraC();
-                    $editarCarrera -> ActualizarCarrerasC();
+                    $editarCarrera -> EditCareersC();
+                    $editarCarrera -> UpdateCareersC();
 
                     ?>
 

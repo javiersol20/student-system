@@ -136,4 +136,12 @@ class UsersC
             }
         }
     }
+    public function GetUsersC()
+    {
+        $tablaBD1 = "usuarios";
+        $tablaBD2 = "carreras";
+        $respuesta = UsersM::GetUsersM($tablaBD1, $tablaBD2);
+
+        return $respuesta;
+    }
 }

@@ -23,6 +23,7 @@ if($_SESSION["rol"] != "Administrador")
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th>Apellido</th>
                             <th>Nombres</th>
                             <th>Carrera</th>
@@ -33,13 +34,20 @@ if($_SESSION["rol"] != "Administrador")
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Solis</td>
-                            <td>Otto Javier</td>
-                            <td>Ing. sistemas</td>
-                            <td>javiersol</td>
-                            <td>Administrador</td>
-                            <td>1234</td>
+                    <?php
+                    $users = UsersC::GetUsersC();
+                    foreach ($users as $key => $value)
+                    {
+                        echo '<tr>
+                            <td>'.($key + 1).'</td>
+                            <td>'.$value["apellido"].'</td>
+                            <td>'.$value["nombre"].'</td>
+                            <td>'.$value["carrera"].'</td>
+                            <td>'.$value["libreta"].'</td>
+                            <td>'.$value["rol"].'</td>
+                            <td>
+                            <input type="password" class="form-control" value="'.$value["clave"].'" readonly disabled>
+                            </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-success" data-toggle="modal" data-target="#EditUser">Editar</button>
@@ -47,7 +55,10 @@ if($_SESSION["rol"] != "Administrador")
 
                                 </div>
                             </td>
-                        </tr>
+                        </tr>';
+                    }
+                    ?>
+
                     </tbody>
                 </table>
             </div>
@@ -81,13 +92,14 @@ if($_SESSION["rol"] != "Administrador")
 
                             <div class="form-group">
                                 <h2>Contraseña:</h2>
-                                <input type="text" name="claveU" class="form-control input-lg" required placeholder="Ingrese la contraseña" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9]+">
+                                <input type="password" name="claveU" class="form-control input-lg" required placeholder="Ingrese la contraseña" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9]+">
                             </div>
 
                             <div class="form-group">
                                 <h2>Seleccionar Carrera</h2>
                                 <select class="form-control input-lg" name="carreraU" >
-                                    <option value="Null">Seleccionar carrera</option>
+                                    <option value="--">--- Seleccionar carrera ---</option>
+
                                     <?php
                                         $careers = CareersC::VerCarrerasC();
 

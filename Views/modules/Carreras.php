@@ -43,7 +43,7 @@ if($_SESSION["rol"] != "Administrador"){
                     <?php
 
                     $crearCarrera = new CareersC();
-                    $crearCarrera -> CrearCarreraC();
+                    $crearCarrera -> CreateCareersC();
 
                     ?>
 
@@ -70,7 +70,7 @@ if($_SESSION["rol"] != "Administrador"){
 
                         <?php
 
-                        $resultado = CareersC::VerCarrerasC();
+                        $resultado = CareersC::ViewCareersC();
 
                         foreach ($resultado as $key => $value) {
 
@@ -127,4 +127,4 @@ if($_SESSION["rol"] != "Administrador"){
 <?php
 
 $borrarCarrera = new CareersC();
-$borrarCarrera -> BorrarCarrerasC();
+$borrarCarrera -> DeleteCareersC();
