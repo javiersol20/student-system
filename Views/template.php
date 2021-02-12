@@ -46,7 +46,7 @@ if (isset($_SESSION["Ingresar"]) && $_SESSION["Ingresar"] == true) {
 
     if (isset($_GET["url"])) {
         $url = explode("/", $_GET["url"]);
-        if ($url[0] == "inicio" || $url[0] == "logout" || $url[0] == "mi-perfil" || $url[0] == "Carreras" || $url[0] == "Editar-Carrera") {
+        if ($url[0] == "inicio" || $url[0] == "logout" || $url[0] == "mi-perfil" || $url[0] == "Carreras" || $url[0] == "Editar-Carrera" || $url[0] == "Users") {
             include "modules/" . $url[0] . ".php";
         }
 

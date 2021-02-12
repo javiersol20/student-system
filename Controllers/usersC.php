@@ -105,4 +105,35 @@ class UsersC
             }
         }
     }
+    public function CreateUserC()
+    {
+        if(isset($_POST["create"])){
+            if(isset($_POST["apellidoU"]) && !empty($_POST["apellidoU"]) && isset($_POST["nombreU"]) && !empty($_POST["nombreU"]) && isset($_POST["usuarioU"]) && !empty($_POST["usuarioU"])
+            && isset($_POST["carreraU"]) && isset($_POST["rolU"]) && !empty($_POST["rolU"])){
+
+
+            $tablaBD = "usuarios";
+
+            $datosC = array("apellido"=>$_POST["apellidoU"], "nombre"=>$_POST["nombreU"], "libreta"=>$_POST["usuarioU"], "clave"=>$_POST["claveU"], "id_carrera"=>$_POST["carreraU"], "rol"=>$_POST["rolU"]);
+
+            $resultado = UsersM::CreateUserM($tablaBD, $datosC);
+
+            if($resultado == true){
+
+                echo '<script>
+
+				window.location = "http://localhost/project-01/Users";
+				</script>';
+
+            }
+
+          }else{
+                echo '<script>
+
+				alert("Todos los campos deben ir llenos, excepto el campo carrera que es opcional");
+				</script>';
+
+            }
+        }
+    }
 }

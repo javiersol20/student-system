@@ -9,7 +9,7 @@
             </li>
 
             <li>
-                <a href="">
+                <a href="Users">
                     <i class="fa fa-home"></i>
                     <span>Usuarios</span>
                 </a>

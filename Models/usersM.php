@@ -45,4 +45,22 @@ class UsersM extends ConnectionDB
         $pdo->close();
         $pdo = null;
     }
+    static public function CreateUserM($tablaBD,$datosC)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("INSERT INTO $tablaBD (libreta, clave, apellido, nombre, id_carrera, rol) VALUES (:libreta, :clave, :apellido, :nombre, :id_carrera, :rol)");
+
+        $pdo -> bindParam(":libreta", $datosC["libreta"], PDO::PARAM_STR);
+        $pdo -> bindParam(":clave", $datosC["clave"], PDO::PARAM_STR);
+        $pdo -> bindParam(":apellido", $datosC["apellido"], PDO::PARAM_STR);
+        $pdo -> bindParam(":nombre", $datosC["nombre"], PDO::PARAM_STR);
+        $pdo -> bindParam(":id_carrera", $datosC["id_carrera"], PDO::PARAM_INT);
+        $pdo -> bindParam(":rol", $datosC["rol"], PDO::PARAM_STR);
+
+        if($pdo -> execute()){
+            return true;
+        }
+
+        $pdo -> close();
+        $pdo = null;
+    }
 }
