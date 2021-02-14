@@ -24,7 +24,7 @@
             </div>
             <?php
             $ingreso = new UsersC();
-            $ingreso -> Login();
+            $ingreso->Login();
             ?>
         </form>
 

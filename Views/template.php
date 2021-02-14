@@ -4,14 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link  rel="icon"   href="http://localhost/project-01/Views/img/icon.png" type="image/png" />
+    <link rel="icon" href="http://localhost/project-01/Views/img/icon.png" type="image/png"/>
     <title>Sistema</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="http://localhost/project-01/Views/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="http://localhost/project-01/Views/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="http://localhost/project-01/Views/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="http://localhost/project-01/Views/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="http://localhost/project-01/Views/bower_components/Ionicons/css/ionicons.min.css">
     <!-- Theme style -->
@@ -46,7 +48,8 @@ if (isset($_SESSION["Ingresar"]) && $_SESSION["Ingresar"] == true) {
 
     if (isset($_GET["url"])) {
         $url = explode("/", $_GET["url"]);
-        if ($url[0] == "inicio" || $url[0] == "logout" || $url[0] == "mi-perfil" || $url[0] == "Carreras" || $url[0] == "Editar-Carrera" || $url[0] == "Users") {
+        if ($url[0] == "inicio" || $url[0] == "logout" || $url[0] == "mi-perfil" || $url[0] == "Carreras" || $url[0] == "Editar-Carrera" || $url[0] == "Users"
+            || $url[0] == "Estudiantes") {
             include "modules/" . $url[0] . ".php";
         }
 
@@ -54,7 +57,8 @@ if (isset($_SESSION["Ingresar"]) && $_SESSION["Ingresar"] == true) {
         include "modules/inicio.php";
     }
     echo '</div>';
-} if (isset($_GET["url"])) {
+}
+if (isset($_GET["url"])) {
     if ($_GET["url"] == "Ingresar") {
 
         include "modules/Ingresar.php";
@@ -63,8 +67,6 @@ if (isset($_SESSION["Ingresar"]) && $_SESSION["Ingresar"] == true) {
     include "modules/Ingresar.php";
 }
 ?>
-
-
 
 
 <!-- jQuery 3 -->
@@ -79,6 +81,9 @@ if (isset($_SESSION["Ingresar"]) && $_SESSION["Ingresar"] == true) {
 <script src="http://localhost/project-01/Views/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="http://localhost/project-01/Views/dist/js/demo.js"></script>
+
+<script src="http://localhost/project-01/Views/js/users.js"></script>
+
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree()

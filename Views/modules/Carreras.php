@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["rol"] != "Administrador"){
+if ($_SESSION["rol"] != "Administrador") {
 
     echo '<script>
 
@@ -32,7 +32,8 @@ if($_SESSION["rol"] != "Administrador"){
 
                         <div class="col-md-6 col-xs-12">
 
-                            <input type="text" name="carrera" class="form-control" placeholder="Ingresar Nueva Carrera" required>
+                            <input type="text" name="carrera" class="form-control" placeholder="Ingresar Nueva Carrera"
+                                   required>
 
                         </div>
 
@@ -43,7 +44,7 @@ if($_SESSION["rol"] != "Administrador"){
                     <?php
 
                     $crearCarrera = new CareersC();
-                    $crearCarrera -> CreateCareersC();
+                    $crearCarrera->CreateCareersC();
 
                     ?>
 
@@ -76,30 +77,37 @@ if($_SESSION["rol"] != "Administrador"){
 
                             echo '<tr>
 							
-									<td>'.$value["id"].'</td>
-									<td>'.$value["nombre"].'</td>
+									<td>' . $value["id"] . '</td>
+									<td>' . $value["nombre"] . '</td>
 
 									<td>
 										
 										<div class="btn-group">
 											
-											<a href="Editar-Carrera/'.$value["id"].'">
+											<a href="Editar-Carrera/' . $value["id"] . '">
 												<button class="btn btn-success">Editar</button>
 											</a>
 
-											<a href="Carreras/'.$value["id"].'">
+											<a href="Carreras/' . $value["id"] . '">
 												<button class="btn btn-danger">Borrar</button>
 											</a>
 
 											<a href="#">
 												<button class="btn btn-warning">Materias</button>
-											</a>
-
-											<a href="#">
+											</a>';
+                                             if($value["id"] == 0)
+                                             {
+                                                 echo '<a href="#">
+												<button disabled class="btn btn-primary">Estudiantes</button>
+											    </a>';
+                                             }else{
+                                                 echo '<a href="Estudiantes/' . $value["id"] . '">
 												<button class="btn btn-primary">Estudiantes</button>
-											</a>
+											</a>';
+                                             }
 
-										</div>
+
+										echo '</div>
 
 									</td>
 
@@ -108,7 +116,6 @@ if($_SESSION["rol"] != "Administrador"){
                         }
 
                         ?>
-
 
 
                         </tbody>
@@ -127,4 +134,4 @@ if($_SESSION["rol"] != "Administrador"){
 <?php
 
 $borrarCarrera = new CareersC();
-$borrarCarrera -> DeleteCareersC();
+$borrarCarrera->DeleteCareersC();

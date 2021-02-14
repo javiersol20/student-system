@@ -1,7 +1,6 @@
 <?php
 
-if (isset($_SESSION["Ingresar"]) && $_SESSION["Ingresar"] == true)
-{
+if (isset($_SESSION["Ingresar"]) && $_SESSION["Ingresar"] == true) {
 
     $_SESSION["Ingresar"] = false;
     session_destroy();

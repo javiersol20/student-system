@@ -3,8 +3,8 @@
         <ul class="sidebar-menu">
             <li>
                 <a href="inicio">
-                <i class="fa fa-home"></i>
-                <span>Inicio</span>
+                    <i class="fa fa-home"></i>
+                    <span>Inicio</span>
                 </a>
             </li>
 

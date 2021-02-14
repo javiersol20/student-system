@@ -1,11 +1,13 @@
 <?php
 
-class CareersC{
+class CareersC
+{
 
     //Crear Carrera
-    public function CreateCareersC(){
+    public function CreateCareersC()
+    {
 
-        if(isset($_POST["carrera"])){
+        if (isset($_POST["carrera"])) {
 
             $tablaBD = "carreras";
 
@@ -13,7 +15,7 @@ class CareersC{
 
             $resultado = CareersM::CreateCareersM($tablaBD, $carrera);
 
-            if($resultado == true){
+            if ($resultado == true) {
 
                 echo '<script>
 
@@ -27,23 +29,26 @@ class CareersC{
     }
 
 
-
-
     //Ver Carreras
-    public function ViewCareersC(){
+    public function ViewCareersC($columnaC = "null",$valorC = "null")
+    {
+
 
         $tablaBD = "carreras";
 
-        $resultado = CareersM::ViewCareersM($tablaBD);
+        $resultado = CareersM::ViewCareersM($tablaBD, $columnaC, $valorC);
 
         return $resultado;
 
     }
 
-
-
+    public function ViewCareerC($columnaC,$valorC)
+    {
+        $tablaBD = "carreras";
+    }
     //Editar Carrera
-    public function EditCareersC(){
+    public function EditCareersC()
+    {
 
         $tablaBD = "carreras";
 
@@ -56,9 +61,9 @@ class CareersC{
         echo '<div class="col-md-6 col-xs-12">
 						
 				<h2>Nombre de la Carrera:</h2>
-				<input type="text" name="carrera" class="form-control input-lg" value="'.$resultado["nombre"].'" required>
+				<input type="text" name="carrera" class="form-control input-lg" value="' . $resultado["nombre"] . '" required>
 
-				<input type="hidden" name="Cid" value="'.$resultado["id"].'">
+				<input type="hidden" name="Cid" value="' . $resultado["id"] . '">
 
 				<br>
 				<button class="btn btn-success" type="sutmit">Guardar Cambios</button>
@@ -69,17 +74,18 @@ class CareersC{
 
 
     //Actualizar Carreras
-    public function UpdateCareersC(){
+    public function UpdateCareersC()
+    {
 
-        if(isset($_POST["carrera"])){
+        if (isset($_POST["carrera"])) {
 
             $tablaBD = "carreras";
 
-            $datosC = array("id"=>$_POST["Cid"], "carrera"=>$_POST["carrera"]);
+            $datosC = array("id" => $_POST["Cid"], "carrera" => $_POST["carrera"]);
 
             $resultado = CareersM::UpdateCareersM($tablaBD, $datosC);
 
-            if($resultado == true){
+            if ($resultado == true) {
 
                 echo '<script>
 
@@ -93,22 +99,21 @@ class CareersC{
     }
 
 
-
-
     //Borrar Carreras
-    public function DeleteCareersC(){
+    public function DeleteCareersC()
+    {
 
         $exp = explode("/", $_GET["url"]);
 
         $id = $exp[1];
 
-        if(isset($id)){
+        if (isset($id)) {
 
             $tablaBD = "carreras";
 
             $resultado = CareersM::DeleteCareersM($tablaBD, $id);
 
-            if($resultado == true){
+            if ($resultado == true) {
 
                 echo '<script>
 
@@ -120,7 +125,6 @@ class CareersC{
         }
 
     }
-
 
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["rol"] != "Administrador"){
+if ($_SESSION["rol"] != "Administrador") {
 
     echo '<script>
 
@@ -34,8 +34,8 @@ if($_SESSION["rol"] != "Administrador"){
                     <?php
 
                     $editarCarrera = new CareersC();
-                    $editarCarrera -> EditCareersC();
-                    $editarCarrera -> UpdateCareersC();
+                    $editarCarrera->EditCareersC();
+                    $editarCarrera->UpdateCareersC();
 
                     ?>
 
