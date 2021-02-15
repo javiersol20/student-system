@@ -30,7 +30,7 @@ class CareersC
 
 
     //Ver Carreras
-    public function ViewCareersC($columnaC = "null",$valorC = "null")
+    static public function ViewCareersC($columnaC = "null",$valorC = "null")
     {
 
 
@@ -42,7 +42,7 @@ class CareersC
 
     }
 
-    public function ViewCareerC($columnaC,$valorC)
+    static public function ViewCareerC($columnaC,$valorC)
     {
         $tablaBD = "carreras";
     }

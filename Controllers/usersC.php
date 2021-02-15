@@ -139,7 +139,7 @@ class UsersC
         }
     }
 
-    public function GetUsersC($columna, $valor)
+    static public function GetUsersC($columna, $valor)
     {
         $tablaBD1 = "usuarios";
         $tablaBD2 = "carreras";
