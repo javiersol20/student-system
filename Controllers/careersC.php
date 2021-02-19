@@ -42,10 +42,7 @@ class CareersC
 
     }
 
-    static public function ViewCareerC($columnaC,$valorC)
-    {
-        $tablaBD = "carreras";
-    }
+
     //Editar Carrera
     public function EditCareersC()
     {

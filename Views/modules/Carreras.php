@@ -90,18 +90,20 @@ if ($_SESSION["rol"] != "Administrador") {
 
 											<a href="Carreras/' . $value["id"] . '">
 												<button class="btn btn-danger">Borrar</button>
-											</a>
-
-											<a href="#">
-												<button class="btn btn-warning">Materias</button>
 											</a>';
                                              if($value["id"] == 0)
                                              {
                                                  echo '<a href="#">
+												<button disabled readonly="" class="btn btn-warning">Materias</button>
+											</a>
+                                                <a href="#">
 												<button disabled class="btn btn-primary">Estudiantes</button>
 											    </a>';
                                              }else{
-                                                 echo '<a href="Estudiantes/' . $value["id"] . '">
+                                                 echo '<a href="Crear-Materias/' . $value["id"] . '">
+												<button class="btn btn-warning">Materias</button>
+											</a>
+                                                 <a href="Estudiantes/' . $value["id"] . '">
 												<button class="btn btn-primary">Estudiantes</button>
 											</a>';
                                              }

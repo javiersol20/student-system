@@ -3,6 +3,7 @@ $(".T").on("click", ".EditarUsuario", function () {
 
     var datos = new FormData();
     datos.append("Uid", Uid);
+
     $.ajax({
         url: "Ajax/usersA.php",
         method: "POST",

@@ -2,21 +2,21 @@
     <section class="sidebar">
         <ul class="sidebar-menu">
             <li>
-                <a href="inicio">
+                <a href="http://localhost/project-01/inicio">
                     <i class="fa fa-home"></i>
                     <span>Inicio</span>
                 </a>
             </li>
 
             <li>
-                <a href="Users">
+                <a href="http://localhost/project-01/Users">
                     <i class="fa fa-home"></i>
                     <span>Usuarios</span>
                 </a>
             </li>
 
             <li>
-                <a href="Carreras">
+                <a href="http://localhost/project-01/Carreras">
                     <i class="fa fa-home"></i>
                     <span>Carreras</span>
                 </a>
