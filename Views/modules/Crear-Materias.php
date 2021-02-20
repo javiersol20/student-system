@@ -68,7 +68,7 @@ if ($_SESSION["rol"] != "Administrador") {
 
                             echo '<td>
                                 <div class="btn-group">
-                                    <a href="#">
+                                    <a href="http://localhost/project-01/Crear-Comisiones/'.$value["id"].'">
                                         <button class="btn btn-defaul">Comisiones</button>
                                     </a>
                                     <a href="http://localhost/project-01/index.php?url=Crear-Materias/'.$exp[1].'&Mid='.$value["id"].'&Cid='.$exp[1].'">

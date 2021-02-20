@@ -41,11 +41,11 @@ class CoursesC
 
         }
     }
-    static public function ViewCoursesC()
+    static public function ViewCoursesC($columna = "null", $valor = "null")
     {
         $tablaBD1 = "materias";
 
-        $respuesta = CoursesM::ViewCoursesM($tablaBD1);
+        $respuesta = CoursesM::ViewCoursesM($tablaBD1,$columna,$valor);
 
         return $respuesta;
     }
@@ -64,6 +64,59 @@ class CoursesC
                 echo '<script> window.location = "http://localhost/project-01/Crear-Materias/'.$Cid.'"; </script>';
             }
 
+        }
+    }
+    public function CreateCommissionC()
+    {
+        if(isset($_POST["id_materia"]))
+        {
+            if(!empty($_POST["id_materia"]) && isset($_POST["numero"]) && !empty($_POST["numero"])
+                && isset($_POST["c_maxima"]) && !empty($_POST["c_maxima"]) && isset($_POST["dias"])
+                && !empty($_POST["dias"]) && isset($_POST["horarios"]) && !empty($_POST["horarios"]))
+            {
+
+                $tablaBD = "comisiones";
+                $datosC = [
+                    'id_materia' => $_POST["id_materia"],
+                    'c_maxima' => $_POST["c_maxima"],
+                    'horario' => $_POST["horarios"],
+                    'numero' => $_POST["numero"],
+                    'dias' => $_POST["dias"]
+                ];
+                $id_materia = $_POST["id_materia"];
+                $respuesta = CoursesM::CreateCommissionM($tablaBD,$datosC);
+
+                if($respuesta == true)
+                {
+                    echo '<script> window.location = "http://localhost/project-01/Crear-Comisiones/'.$id_materia.'"; </script>';
+                }
+
+            }else{
+                echo '<script> alert("Todos los campos son obligatorios"); </script>';
+            }
+        }
+    }
+    static public function ViewCommissionsC($columna,$valor)
+    {
+        $tablaBD = "comisiones";
+        $respuesta= CoursesM::ViewCommissionsM($tablaBD,$columna,$valor);
+        return $respuesta;
+    }
+    public function DeleteCommissionsC()
+    {
+        if(isset($_GET["Mid"]))
+        {
+            $tablaBD = "comisiones";
+            $id = $_GET["Cid"];
+            $Mid = $_GET["Mid"];
+
+            $resultado = CoursesM::DeleteCommissionsM($tablaBD,$id);
+
+            if($resultado == true)
+            {
+                echo '<script> window.location = "http://localhost/project-01/Crear-Comisiones/'.$Mid.'"; </script>';
+
+            }
         }
     }
 }
