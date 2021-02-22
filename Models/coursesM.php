@@ -90,4 +90,59 @@ class CoursesM extends ConnectionDB
         $pdo -> close();
         $pdo= null;
     }
+    static public function AddNoteM($tablaBD,$datosC)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("INSERT INTO $tablaBD (id_alumno, libreta, id_materia, fecha, profesor, nota_final, estado) 
+                                                    VALUES (:id_alumno, :libreta, :id_materia, :fecha, :profesor, :nota_final, :estado)");
+        $pdo->bindParam(":id_alumno", $datosC["id_alumno"], PDO::PARAM_INT);
+        $pdo->bindParam(":libreta", $datosC["libreta"], PDO::PARAM_STR);
+        $pdo->bindParam(":id_materia", $datosC["id_materia"], PDO::PARAM_INT);
+        $pdo->bindParam(":fecha", $datosC["fecha"], PDO::PARAM_STR);
+        $pdo->bindParam(":profesor", $datosC["profesor"], PDO::PARAM_STR);
+        $pdo->bindParam(":nota_final", $datosC["nota_final"], PDO::PARAM_INT);
+        $pdo->bindParam(":estado", $datosC["estado"], PDO::PARAM_STR);
+
+        if($pdo->execute())
+        {
+            return true;
+        }
+        $pdo-> close();
+        $pdo = null;
+    }
+    static public function ViewNotesM($tablaBD,$columna,$valor)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD
+                                            WHERE $columna = :$columna");
+        $pdo->bindParam(":".$columna,$valor, PDO::PARAM_INT);
+        $pdo->execute();
+        return $pdo->fetchAll();
+        $pdo->close();
+        $pdo = null;
+    }
+    static public function ViewNoteM($tablaBD,$columna,$valor)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD
+                                            WHERE $columna = :$columna");
+        $pdo->bindParam(":".$columna,$valor, PDO::PARAM_INT);
+        $pdo->execute();
+        return $pdo->fetch();
+        $pdo->close();
+        $pdo = null;
+    }
+    static public function ChangeNoteM($tablaBD,$datosC)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("UPDATE $tablaBD SET fecha = :fecha, profesor = :profesor, nota_final = :nota_final, estado = :estado WHERE id = :id");
+        $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+        $pdo->bindParam(":fecha", $datosC["fechaU"], PDO::PARAM_STR);
+        $pdo->bindParam(":profesor", $datosC["profesor"], PDO::PARAM_STR);
+        $pdo->bindParam(":nota_final", $datosC["nota_final"], PDO::PARAM_INT);
+        $pdo->bindParam(":estado", $datosC["estado"], PDO::PARAM_STR);
+
+        if($pdo->execute())
+        {
+            return true;
+        }
+        $pdo -> close();
+        $pdo = null;
+    }
 }

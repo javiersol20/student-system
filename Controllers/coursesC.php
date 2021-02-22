@@ -119,4 +119,105 @@ class CoursesC
             }
         }
     }
+    public function AddNoteC()
+    {
+        if(isset($_POST["id_alumno"]))
+        {
+            if(!empty($_POST["id_alumno"]) && isset($_POST["id_alumno"]) && !empty($_POST["libreta"])
+                && isset($_POST["libreta"]) && !empty($_POST["libreta"]) && isset($_POST["id_carrera"])
+                && !empty($_POST["id_carrera"]) && isset($_POST["id_materia"]) && !empty($_POST["id_materia"])
+                && isset($_POST["fecha"]) && !empty($_POST["fecha"]) && isset($_POST["profesor"]) && !empty($_POST["profesor"]))
+            {
+                if($_POST["nota_final"] >= 9)
+                {
+                    $estado = "Aprobado";
+                }elseif ($_POST["nota_final"] >= 6)
+                {
+                    $estado = "Regular";
+                }elseif ($_POST["nota_final"] <= 5)
+                {
+                    $estado = "Desaprobado";
+                }elseif ($_POST["nota_final"] === 0)
+                {
+                    $estado = "No cursado";
+                }
+
+                $tablaBD = "notas";
+                $libreta = $_POST["libreta"];
+                $id_carera = $_POST["id_carrera"];
+                $datosC = [
+                    "id_alumno" => $_POST["id_alumno"],
+                    "libreta" => $_POST["libreta"],
+                    "id_materia" => $_POST["id_materia"],
+                    "fecha" => $_POST["fecha"],
+                    "profesor" => $_POST["profesor"],
+                    "nota_final" => $_POST["nota_final"],
+                    "estado" => $estado
+                ];
+
+                $respuesta = CoursesM::AddNoteM($tablaBD,$datosC);
+
+                if($respuesta == true)
+                {
+                    echo '<script> window.location = "http://localhost/project-01/Ver-Plan/'.$id_carera.'/'.$libreta.'" </script>';
+                }
+            }else{
+                echo '<script> alert("Todos los campos son obligatorios"); </script>';
+            }
+        }
+    }
+    static public function ViewNotesC($columna, $valor)
+    {
+        $tablaBD = "notas";
+        $respuesta = CoursesM::ViewNotesM($tablaBD,$columna,$valor);
+        return $respuesta;
+    }
+    static public function ViewNoteC($columna, $valor)
+    {
+        $tablaBD = "notas";
+        $respuesta = CoursesM::ViewNoteM($tablaBD,$columna,$valor);
+        return $respuesta;
+    }
+    public function ChangeNoteC()
+    {
+        if(isset($_POST["id_alumno"]))
+        {
+            if(!empty($_POST["id_alumno"]) && isset($_POST["id_alumno"]) && !empty($_POST["libreta"])
+                && isset($_POST["libreta"]) && !empty($_POST["libreta"]) && isset($_POST["id_carrera"])
+                && !empty($_POST["id_carrera"]) && isset($_POST["id_materia"]) && !empty($_POST["id_materia"])
+                && isset($_POST["fecha"]) && !empty($_POST["fecha"]) && isset($_POST["profesor"]) && !empty($_POST["profesor"]))
+            {
+                if($_POST["nota_final"] >= 9)
+                {
+                    $estado = "Aprobado";
+                }elseif ($_POST["nota_final"] >= 6)
+                {
+                    $estado = "Regular";
+                }elseif ($_POST["nota_final"] <= 5)
+                {
+                    $estado = "Desaprobado";
+                }elseif ($_POST["nota_final"] === 0)
+                {
+                    $estado = "No cursado";
+                }
+                $tablaBD = "notas";
+                $libreta = $_POST["libreta"];
+                $id_carera = $_POST["id_carrera"];
+                $datosC = [
+                    "id" => $_POST["nota_id"],
+                    "fechaU" => $_POST["fecha"],
+                    "profesor" => $_POST["profesor"],
+                    "nota_final" => $_POST["nota_final"],
+                    "estado" => $estado
+                ];
+                $resultado = CoursesM::ChangeNoteM($tablaBD,$datosC);
+                if($resultado == true)
+                {
+                    echo '<script> window.location = "http://localhost/project-01/Ver-Plan/'.$id_carera.'/'.$libreta.'" </script>';
+                }
+            }else{
+                echo '<script> alert("Todos los campos son obligatorios"); </script>';
+            }
+        }
+    }
 }
