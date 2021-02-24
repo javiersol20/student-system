@@ -46,7 +46,7 @@
                                 <a href="mi-perfil" class="btn btn-default btn-flat">Perfil</a>
                             </div>
                             <div class="pull-right">
-                                <a href="logout" class="btn btn-danger btn-flat">Salir</a>
+                                <a href="http://localhost/project-01/logout" class="btn btn-danger btn-flat">Salir</a>
                             </div>
                         </li>
                     </ul>

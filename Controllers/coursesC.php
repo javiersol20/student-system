@@ -96,10 +96,10 @@ class CoursesC
             }
         }
     }
-    static public function ViewCommissionsC($columna,$valor)
+    static public function ViewCommissionsC($columna,$valor, $row = null)
     {
         $tablaBD = "comisiones";
-        $respuesta= CoursesM::ViewCommissionsM($tablaBD,$columna,$valor);
+        $respuesta= CoursesM::ViewCommissionsM($tablaBD,$columna,$valor,$row);
         return $respuesta;
     }
     public function DeleteCommissionsC()
@@ -219,5 +219,32 @@ class CoursesC
                 echo '<script> alert("Todos los campos son obligatorios"); </script>';
             }
         }
+    }
+    public function EnrollSubjectC()
+    {
+        if(isset($_POST["id_alumno"])){
+
+            $tablaBD = "insc_materias";
+
+            $datosC = ["id_alumno"=>$_POST["id_alumno"], "id_materia"=>$_POST["id_materia"], "id_comision"=>$_POST["id_comision"]];
+
+            $resultado = CoursesM::EnrollSubjectM($tablaBD, $datosC);
+
+            if($resultado == true){
+
+                echo '<script>
+
+					window.location = "http://localhost/project-01/Materias";
+					</script>';
+
+            }
+
+        }
+    }
+    static public function SeeQuotaC($columna, $valor, $row = null)
+    {
+        $tablaBD = "insc_materias";
+        $resultado = CoursesM::SeeQuotaM($tablaBD,$columna,$valor,$row);
+        return $resultado;
     }
 }

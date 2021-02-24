@@ -42,6 +42,7 @@ if($_SESSION["rol"] != "Administrador")
                             <?php
                                 $columna = "id_materia";
                                 $valor = $exp[1];
+
                                 $comisiones = CoursesC::ViewCommissionsC($columna,$valor);
                                 foreach ($comisiones as $key => $value)
                                 {

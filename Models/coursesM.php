@@ -69,12 +69,21 @@ class CoursesM extends ConnectionDB
         $pdo->close();
         $pdo = null;
     }
-    static public function ViewCommissionsM($tablaBD,$columna,$valor)
+    static public function ViewCommissionsM($tablaBD,$columna,$valor, $row)
     {
-        $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna");
-        $pdo->bindParam(":".$columna,$valor,PDO::PARAM_INT);
-        $pdo->execute();
-        return $pdo->fetchAll();
+        if($row == null)
+        {
+            $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna");
+            $pdo->bindParam(":".$columna,$valor,PDO::PARAM_INT);
+            $pdo->execute();
+            return $pdo->fetchAll();
+        }else{
+            $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna");
+            $pdo->bindParam(":".$columna,$valor,PDO::PARAM_INT);
+            $pdo->execute();
+            return $pdo->fetch();
+        }
+
         $pdo->close();
         $pdo = null;
     }
@@ -143,6 +152,40 @@ class CoursesM extends ConnectionDB
             return true;
         }
         $pdo -> close();
+        $pdo = null;
+    }
+    static public function EnrollSubjectM($tablaBD, $datosC)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("INSERT INTO $tablaBD (id_materia, id_alumno, id_comision) VALUES (:id_materia, :id_alumno, :id_comision)");
+        $pdo -> bindParam(":id_materia", $datosC["id_materia"], PDO::PARAM_INT);
+        $pdo -> bindParam(":id_alumno", $datosC["id_alumno"], PDO::PARAM_INT);
+        $pdo -> bindParam(":id_comision", $datosC["id_comision"], PDO::PARAM_INT);
+
+        if($pdo -> execute()){
+            return true;
+        }
+        $pdo->close();
+
+        $pdo = null;
+
+    }
+    static public function SeeQuotaM($tablaBD, $columna, $valor, $row)
+    {
+        if($row == "Null")
+        {
+            $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna");
+            $pdo -> bindParam(":".$columna,$valor, PDO::PARAM_STR);
+            $pdo->execute();
+            return $pdo->fetchAll();
+        }else{
+            $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna");
+            $pdo -> bindParam(":".$columna,$valor, PDO::PARAM_STR);
+            $pdo->execute();
+            return $pdo->fetch();
+        }
+
+
+        $pdo->close();
         $pdo = null;
     }
 }
