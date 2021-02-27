@@ -92,7 +92,7 @@
 
 - Fix broken highlighting for right-aligned bars.
   (reported by BeWiBu and Mihai Stanciu, issues #975 and #1093, with further assistance by Eric Byers, pull request
-  #1120)
+  # 1120)
 
 - Prevent white circles from sometimes showing up inside of pie charts.
   (reported by Pierre Dubois and Jack Klink, issues #1128 and #1073)
@@ -228,7 +228,7 @@ The base and overlay canvas are now using the CSS classes "flot-base" and
   (sponsored by YCharts.com, implementation by Ole Laursen and David Schnur)
 
 - Support for setting the interval between redraws of the overlay canvas with redrawOverlayInterval. (suggested in issue
-  185)
+    185)
 
 - Support for multiple thresholds in thresholds plugin. (patch by Arnaud Bellec, issue 523)
 
@@ -243,7 +243,7 @@ The base and overlay canvas are now using the CSS classes "flot-base" and
 - Prevent the pie example page from generating single-slice pies. (patch by Shane Reustle)
 
 - In addition to "left" and "center", bars now recognize "right" as an alignment option. (patch by Michael Mayer, issue
-  520)
+    520)
 
 - Switched from toFixed to a much faster default tickFormatter. (patch by Clemens Stolle)
 
@@ -323,7 +323,7 @@ The base and overlay canvas are now using the CSS classes "flot-base" and
 
 - Prevented the local insertSteps and fmt variables from becoming global.
   (first reported by Marc Bennewitz and Szymon Barglowski, patch by Nick Campbell, issues #825 and #831, pull request
-  #851)
+  # 851)
 
 - Prevented several threshold plugin variables from becoming global. (patch by Lasse Dahl Ebert)
 

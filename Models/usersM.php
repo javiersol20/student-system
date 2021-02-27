@@ -84,6 +84,7 @@ class UsersM extends ConnectionDB
         $pdo->close();
         $pdo = null;
     }
+
     static public function GetUsersM2($tablaBD1, $columna, $valor)
     {
         $pdo = ConnectionDB::cDB()->prepare("SELECT * FROM $tablaBD1 WHERE $columna = :$columna");

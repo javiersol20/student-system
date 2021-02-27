@@ -1,6 +1,5 @@
 <?php
-if($_SESSION["rol"] != "Administrador")
-{
+if ($_SESSION["rol"] != "Administrador") {
     echo '<script> window.location = "inicio"; </script>';
     return;
 }
@@ -17,24 +16,23 @@ if($_SESSION["rol"] != "Administrador")
             <div class="box-body">
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
-                        <tr>
-                            <th>Código</th>
-                            <th>Nombre</th>
-                            <th></th>
-                        </tr>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th></th>
+                    </tr>
                     </thead>
                     <tbody>
                     <?php
                     $carrera = CareersC::ViewCareersC();
                     foreach ($carrera as $key => $value) {
                         echo '  <tr>
-                            <td>'.$value["id"].'</td>
-                            <td>'.$value["nombre"].'</td>
+                            <td>' . $value["id"] . '</td>
+                            <td>' . $value["nombre"] . '</td>
                             <td>
                                 <div class="btn-group">';
-                                if($value["id"] == 0)
-                                {
-                                    echo ' <a href="#">
+                        if ($value["id"] == 0) {
+                            echo ' <a href="#">
                                         <button class="btn btn-success" disabled readonly="">Ver Exámenes</button>
                                     </a>
 
@@ -42,22 +40,22 @@ if($_SESSION["rol"] != "Administrador")
                                     <a href="#">
                                         <button class="btn btn-warning" disabled readonly="">Crear exámenes</button>
                                     </a>';
-                                }else{
+                        } else {
 
 
-                             echo ' <a href="Ver-Examenes/'.$value["id"].'">
+                            echo ' <a href="Ver-Examenes/' . $value["id"] . '">
                                         <button class="btn btn-success">Ver Exámenes</button>
                                     </a>
 
 
-                                    <a href="Crear-Examenes/'.$value["id"].'">
+                                    <a href="Crear-Examenes/' . $value["id"] . '">
                                         <button class="btn btn-warning">Crear exámenes</button>
                                     </a>
                                 </div>
                             </td>
                         </tr>';
-                    }
                         }
+                    }
                     ?>
 
                     </tbody>

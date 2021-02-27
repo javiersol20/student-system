@@ -53,19 +53,20 @@ if ($_SESSION["rol"] != "Administrador") {
                     $columna = "id";
                     $valor = 1;
 
-                    $resultado = SettingsC::ViewSettingC($columna,$valor);
+                    $resultado = SettingsC::ViewSettingC($columna, $valor);
 
-                    if($resultado["h_materias"] == 0)
-                    {
+                    if ($resultado["h_materias"] == 0) {
                         echo '<button class="btn btn-success" type="submit" data-toggle="modal" data-target="#HM">Habilitar Inscripciones a Materias</button>';
 
-                    }else{
+                    } else {
                         echo '<button class="btn btn-warning" type="submit" data-toggle="modal" data-target="#DM">Deshabilitar Inscripciones a Materias</button>';
 
                     }
 
                     ?>
-                    <button class="btn btn-danger pull-right" type="submit" data-toggle="modal" data-target="#VaciarRegistrosMaterias">Vaciar Registros de Inscripciones a las Materias</button>
+                    <button class="btn btn-danger pull-right" type="submit" data-toggle="modal"
+                            data-target="#VaciarRegistrosMaterias">Vaciar Registros de Inscripciones a las Materias
+                    </button>
 
                 </div>
 
@@ -110,25 +111,24 @@ if ($_SESSION["rol"] != "Administrador") {
 											<a href="Carreras/' . $value["id"] . '">
 												<button class="btn btn-danger">Borrar</button>
 											</a>';
-                                             if($value["id"] == 0)
-                                             {
-                                                 echo '<a href="#">
+                            if ($value["id"] == 0) {
+                                echo '<a href="#">
 												<button disabled readonly="" class="btn btn-warning">Materias</button>
 											</a>
                                                 <a href="#">
 												<button disabled class="btn btn-primary">Estudiantes</button>
 											    </a>';
-                                             }else{
-                                                 echo '<a href="Crear-Materias/' . $value["id"] . '">
+                            } else {
+                                echo '<a href="Crear-Materias/' . $value["id"] . '">
 												<button class="btn btn-warning">Materias</button>
 											</a>
                                                  <a href="Estudiantes/' . $value["id"] . '">
 												<button class="btn btn-primary">Estudiantes</button>
 											</a>';
-                                             }
+                            }
 
 
-										echo '</div>
+                            echo '</div>
 
 									</td>
 
@@ -186,7 +186,7 @@ if ($_SESSION["rol"] != "Administrador") {
                     <?php
 
                     $habilitar = new SettingsC();
-                    $habilitar -> EnableCoursesC();
+                    $habilitar->EnableCoursesC();
 
                     ?>
 
@@ -233,7 +233,7 @@ if ($_SESSION["rol"] != "Administrador") {
                     <?php
 
                     $inhabilitar = new SettingsC();
-                    $inhabilitar -> DisableCourseC();
+                    $inhabilitar->DisableCourseC();
 
                     ?>
                 </form>
@@ -279,7 +279,7 @@ if ($_SESSION["rol"] != "Administrador") {
                     <?php
 
                     $delete = new SettingsC();
-                    $delete -> DeleteCoursesC();
+                    $delete->DeleteCoursesC();
 
                     ?>
 

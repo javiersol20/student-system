@@ -1,5 +1,5 @@
 <?php
-
+require_once "Models/rutasM.php";
 require_once "Controllers/templateC.php";
 
 require_once "Controllers/usersC.php";
@@ -16,6 +16,10 @@ require_once "Models/coursesM.php";
 
 require_once "Controllers/examsC.php";
 require_once "Models/examsM.php";
+
+require_once "Controllers/certificatesC.php";
+require_once "Models/certificatesM.php";
+
 
 $template = new Template();
 $template->callTemplate();

@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["rol"] != "Administrador"){
+if ($_SESSION["rol"] != "Administrador") {
 
     echo '<script>
 
@@ -32,22 +32,17 @@ if($_SESSION["rol"] != "Administrador"){
 
         $materia = CoursesC::ViewCoursesC($columna, $valor);
 
-        echo '<h1>Inscriptos para el Exámen de: '.$materia["nombre"].'<br><br>
+        echo '<h1>Inscriptos para el Exámen de: ' . $materia["nombre"] . '<br><br>
 
-		Fecha: '.$examen["fecha"].' - Hora: '.$examen["hora"].' - Aula: '.$examen["aula"].'
+		Fecha: ' . $examen["fecha"] . ' - Hora: ' . $examen["hora"] . ' - Aula: ' . $examen["aula"] . '
 		</h1>
 		<br>';
 
-        echo '<a href="http://localhost/project-01/tcpdf/pdf/Inscriptos-Examen.php/'.$exp[1].'" target="blank">
+        echo '<a href="http://localhost/project-01/tcpdf/pdf/Inscriptos-Examen.php/' . $exp[1] . '" target="blank">
 				<button class="btn btn-primary">Generar PDF</button>
 			</a>';
 
         ?>
-
-
-
-
-
 
 
     </section>
@@ -81,8 +76,8 @@ if($_SESSION["rol"] != "Administrador"){
 
                         echo '<tr>
 
-								<td>'.($key+1).'</td>
-								<td>'.$value["libreta"].'</td>';
+								<td>' . ($key + 1) . '</td>
+								<td>' . $value["libreta"] . '</td>';
 
                         $columna = "id";
                         $valor = $value["id_alumno"];
@@ -91,13 +86,11 @@ if($_SESSION["rol"] != "Administrador"){
 
                         foreach ($alumnos as $key => $v) {
 
-                            echo '<td>'.$v["apellido"].' '.$v["nombre"].'</td>
+                            echo '<td>' . $v["apellido"] . ' ' . $v["nombre"] . '</td>
 
 							</tr>';
 
                         }
-
-
 
 
                     }

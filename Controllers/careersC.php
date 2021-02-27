@@ -1,5 +1,6 @@
 <?php
 
+
 class CareersC
 {
 
@@ -30,7 +31,7 @@ class CareersC
 
 
     //Ver Carreras
-    static public function ViewCareersC($columnaC = "null",$valorC = "null")
+    static public function ViewCareersC($columnaC = "null", $valorC = "null")
     {
 
 

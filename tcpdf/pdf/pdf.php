@@ -47,7 +47,7 @@ $pdf->SetFont('dejavusans', '', 11, '', true);
 $pdf->AddPage();
 
 // set text shadow effect
-$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
+$pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
 
 // Set some content to print
 
@@ -69,5 +69,5 @@ $pdf->Output('pdf.pdf', 'I');
 //============================================================+
 // END OF FILE
 //============================================================+
-  ?>
+?>
  

@@ -9,9 +9,11 @@ require_once "../../Models/usersM.php";
 require_once "../../Controllers/examsC.php";
 require_once "../../Models/examsM.php";
 
-class pdfInscriptosExamen{
+class pdfInscriptosExamen
+{
 
-    public function pdfInscriptos(){
+    public function pdfInscriptos()
+    {
 
         require_once('tcpdf_include.php');
 
@@ -76,7 +78,7 @@ EOF;
 
             foreach ($alumnos as $key => $v) {
 
-                $n = ($key+1);
+                $n = ($key + 1);
                 $html2 = <<<EOF
 
 	<table style="border: 1px solid black; text-align:center; font-size:15px">
@@ -101,7 +103,7 @@ EOF;
         }
 
 
-        $pdf->Output('Inscriptos-Examen-'.$materia["nombre"].'.pdf');
+        $pdf->Output('Inscriptos-Examen-' . $materia["nombre"] . '.pdf');
 
 
     }
@@ -110,4 +112,4 @@ EOF;
 }
 
 $a = new pdfInscriptosExamen();
-$a -> pdfInscriptos();
+$a->pdfInscriptos();

@@ -1,6 +1,5 @@
 <?php
-if($_SESSION["rol"] != "Administrador")
-{
+if ($_SESSION["rol"] != "Administrador") {
     echo '<script> window.location = "inicio"; </script>';
     return;
 }
@@ -16,11 +15,11 @@ if($_SESSION["rol"] != "Administrador")
                     $exp = explode("/", $_GET["url"]);
                     $columna = "id";
                     $valor = $exp[2];
-                    $materia = CoursesC::ViewCoursesC($columna,$valor);
-                    echo '<h2>Crear una fecha de examen para: <strong>'.$materia["nombre"].'</strong></h2>
-                    <input type="hidden" name="id_materia" value="'.$exp[2].'">
+                    $materia = CoursesC::ViewCoursesC($columna, $valor);
+                    echo '<h2>Crear una fecha de examen para: <strong>' . $materia["nombre"] . '</strong></h2>
+                    <input type="hidden" name="id_materia" value="' . $exp[2] . '">
                     <input type="hidden" name="estado" value="1">
-                    <input type="hidden" name="id_carrera" value="'.$exp[1].'">';
+                    <input type="hidden" name="id_carrera" value="' . $exp[1] . '">';
                     ?>
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
@@ -43,7 +42,7 @@ if($_SESSION["rol"] != "Administrador")
                     </div>
                     <?php
                     $crearE = new ExamsC();
-                    $crearE -> CreateExamC();
+                    $crearE->CreateExamC();
                     ?>
                 </form>
             </div>

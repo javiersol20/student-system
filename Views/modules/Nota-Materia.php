@@ -3,21 +3,18 @@ $exp = explode("/", $_GET["url"]);
 $columna = "id_materia";
 $valor = $exp[3];
 
-$nota = CoursesC::ViewNotesC($columna,$valor);
+$nota = CoursesC::ViewNotesC($columna, $valor);
 
-if($_SESSION["rol"] != "Administrador")
-{
+if ($_SESSION["rol"] != "Administrador") {
     echo '<script>
             window.location = "Inicio";
         </script>';
     return;
 }
-foreach ($nota as $Key => $EN)
-{
-    if($EN["id_materia"] == $exp[3] && $EN["libreta"] == $exp[2])
-    {
+foreach ($nota as $Key => $EN) {
+    if ($EN["id_materia"] == $exp[3] && $EN["libreta"] == $exp[2]) {
         echo '<script>
-            window.location = "http://localhost/project-01/Editar-Nota/'.$exp[3].'/'.$exp[2].'/'.$EN["id"].'";
+            window.location = "http://localhost/project-01/Editar-Nota/' . $exp[3] . '/' . $exp[2] . '/' . $EN["id"] . '";
             </script>';
         return;
     }
@@ -32,16 +29,16 @@ foreach ($nota as $Key => $EN)
                     $exp = explode("/", $_GET["url"]);
                     $columna = "libreta";
                     $valor = $exp[2];
-                    $estudiante = UsersC::GetUsersC($columna,$valor);
-                    echo '<h2>Alumno: '.$estudiante["nombre"].' - Libreta: '.$estudiante["libreta"].'</h2>';
-                    echo '<input type="hidden" name="id_alumno" value="'.$estudiante["id"].'">';
-                    echo '<input type="hidden" name="libreta" value="'.$estudiante["libreta"].'">';
-                    echo '<input type="hidden" name="id_carrera" value="'.$exp[1].'">';
+                    $estudiante = UsersC::GetUsersC($columna, $valor);
+                    echo '<h2>Alumno: ' . $estudiante["nombre"] . ' - Libreta: ' . $estudiante["libreta"] . '</h2>';
+                    echo '<input type="hidden" name="id_alumno" value="' . $estudiante["id"] . '">';
+                    echo '<input type="hidden" name="libreta" value="' . $estudiante["libreta"] . '">';
+                    echo '<input type="hidden" name="id_carrera" value="' . $exp[1] . '">';
                     $columna = "id";
                     $valor = $exp[3];
-                    $materia = CoursesC::ViewCoursesC($columna,$valor);
-                    echo '<h2>Materia: '.$materia["nombre"].'</h2>';
-                    echo '<input type="hidden" name="id_materia" value="'.$materia["id"].'">';
+                    $materia = CoursesC::ViewCoursesC($columna, $valor);
+                    echo '<h2>Materia: ' . $materia["nombre"] . '</h2>';
+                    echo '<input type="hidden" name="id_materia" value="' . $materia["id"] . '">';
                     ?>
 
                     <div class="row">
@@ -63,7 +60,7 @@ foreach ($nota as $Key => $EN)
                     </div>
                     <?php
                     $notas = new CoursesC();
-                    $notas -> AddNoteC();
+                    $notas->AddNoteC();
                     ?>
                 </form>
             </div>

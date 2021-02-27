@@ -1,5 +1,3 @@
-
-
 <div class="content-wrapper">
 
     <section class="content-header">
@@ -13,7 +11,7 @@
 
         $carrera = CareersC::ViewCareersC($columna, $valor);
 
-        echo '<h1>Exámenes de la Carrera: '.$carrera["nombre"].'</h1>';
+        echo '<h1>Exámenes de la Carrera: ' . $carrera["nombre"] . '</h1>';
 
         ?>
 
@@ -32,7 +30,7 @@
 
                 $ajustes = SettingsC::ViewSettingC($columna, $valor);
 
-                if($ajustes["h_examenes"] != 0){
+                if ($ajustes["h_examenes"] != 0) {
 
                     echo '
 
@@ -45,7 +43,7 @@
 								<th>Materia</th>
 								<th>Fecha</th>';
 
-                    if($_SESSION["rol"] == "Administrador"){
+                    if ($_SESSION["rol"] == "Administrador") {
 
                         echo '<th>Profesor</th>
 								<th>Hora</th>
@@ -68,9 +66,9 @@
 
                     foreach ($resultado as $key => $value) {
 
-                        if($value["id_carrera"] == $exp[1]){
+                        if ($value["id_carrera"] == $exp[1]) {
 
-                            if($_SESSION["rol"] == "Estudiante" && $value["estado"] == 1){
+                            if ($_SESSION["rol"] == "Estudiante" && $value["estado"] == 1) {
 
                                 echo '<tr>';
 
@@ -79,22 +77,22 @@
 
                                 $materia = CoursesC::ViewCoursesC($columna, $valor);
 
-                                if($value["id_materia"] == $materia["id"]){
+                                if ($value["id_materia"] == $materia["id"]) {
 
-                                    echo '<td>'.$materia["nombre"].'</td>';
+                                    echo '<td>' . $materia["nombre"] . '</td>';
 
                                 }
 
-                                echo '<td>'.$value["fecha"].'</td>';
+                                echo '<td>' . $value["fecha"] . '</td>';
 
 
                                 echo '<td>
 
 										<div class="btn-group">';
 
-                                if($_SESSION["rol"] == "Estudiante"){
+                                if ($_SESSION["rol"] == "Estudiante") {
 
-                                    echo '<a href="http://localhost/project-01/insc-examen/'.$_SESSION["id_carrera"].'/'.$value["id"].'">
+                                    echo '<a href="http://localhost/project-01/insc-examen/' . $_SESSION["id_carrera"] . '/' . $value["id"] . '">
 
 										<button class="btn btn-primary">Ver Detalles</button>
 
@@ -110,7 +108,7 @@
 
 									</tr>';
 
-                            }else if($_SESSION["rol"] == "Administrador"){
+                            } else if ($_SESSION["rol"] == "Administrador") {
 
                                 echo '<tr>';
 
@@ -119,19 +117,19 @@
 
                                 $materia = CoursesC::ViewCoursesC($columna, $valor);
 
-                                if($value["id_materia"] == $materia["id"]){
+                                if ($value["id_materia"] == $materia["id"]) {
 
-                                    echo '<td>'.$materia["nombre"].'</td>';
+                                    echo '<td>' . $materia["nombre"] . '</td>';
 
                                 }
 
-                                echo '<td>'.$value["fecha"].'</td>';
+                                echo '<td>' . $value["fecha"] . '</td>';
 
-                                if($_SESSION["rol"] == "Administrador"){
+                                if ($_SESSION["rol"] == "Administrador") {
 
-                                    echo '<td>'.$value["profesor"].'</td>
-										<td>'.$value["hora"].'</td>
-										<td>'.$value["aula"].'</td>';
+                                    echo '<td>' . $value["profesor"] . '</td>
+										<td>' . $value["hora"] . '</td>
+										<td>' . $value["aula"] . '</td>';
 
                                 }
 
@@ -140,15 +138,15 @@
 										<div class="btn-group">';
 
 
-                                if($_SESSION["rol"] == "Administrador"){
+                                if ($_SESSION["rol"] == "Administrador") {
 
-                                    echo '<a href="http://localhost/project-01/Inscriptos-examen/'.$value["id"].'">
+                                    echo '<a href="http://localhost/project-01/Inscriptos-examen/' . $value["id"] . '">
 
 										<button class="btn btn-primary">Ver Inscriptos</button>
 
 										</a>';
 
-                                    if($value["estado"] == 1){
+                                    if ($value["estado"] == 1) {
 
                                         echo '<a href="http://localhost/project-01/">
 
@@ -156,7 +154,7 @@
 
 												</a>';
 
-                                    }else{
+                                    } else {
 
                                         echo '<a href="http://localhost/project-01/">
 
@@ -188,16 +186,11 @@
                     }
 
 
-
-
-
-
-
                     echo '</tbody>
 
 					</table>';
 
-                }else{
+                } else {
 
                     echo '<div class="alert alert-warning">Aún no están Habilitadas las fechas de Inscripciones.</div>';
 

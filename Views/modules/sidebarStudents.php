@@ -2,7 +2,7 @@
     <section class="sidebar">
         <ul class="sidebar-menu">
             <li>
-                <a href="http://localhost/project-01/inicio">
+                <a href="<?= $ruta ?>/inicio">
                     <i class="fa fa-home"></i>
                     <span>Inicio</span>
                 </a>
@@ -10,14 +10,14 @@
 
 
             <li>
-                <a href="http://localhost/project-01/Plan-de-Estudios">
+                <a href="<?= $ruta ?>/Plan-de-Estudios">
                     <i class="fa fa-home"></i>
                     <span>Plan de estudios</span>
                 </a>
             </li>
 
             <li>
-                <a href="http://localhost/project-01/Materias">
+                <a href="<?= $ruta ?>/Materias">
                     <i class="fa fa-home"></i>
                     <span>Inscripciones</span>
                 </a>
@@ -25,14 +25,14 @@
 
             <li>
                 <?php
-                echo '<a href="http://localhost/project-01/Ver-Examenes/'.$_SESSION["id_carrera"].'">';
+                echo '<a href="<?= $ruta ?>/Ver-Examenes/' . $_SESSION["id_carrera"] . '">';
                 ?>
 
-                    <i class="fa fa-home"></i>
-                    <span>Éxamenes</span>
+                <i class="fa fa-home"></i>
+                <span>Éxamenes</span>
                 </a>
             </li>
-            
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-list-ul"></i>
@@ -43,12 +43,12 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="http://localhost/project-01/Constancia-Alumno">
+                        <a href="<?= $ruta ?>/Constancia-Alumno">
                             <span>Constancia de alumnos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/project-01/Constancia-Materia">
+                        <a href="<?= $ruta ?>/Constancia-Materia">
                             <span>Constancia de Materias</span>
                         </a>
                     </li>

@@ -5,34 +5,36 @@ require_once "../../Models/coursesM.php";
 require_once "../../Controllers/usersC.php";
 require_once "../../Models/usersM.php";
 
-class pdfCourseEnrolled{
+class pdfCourseEnrolled
+{
 
-public function pdfEnrolled(){
-require_once ('tcpdf_include.php');
+    public function pdfEnrolled()
+    {
+        require_once('tcpdf_include.php');
 
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-$pdf -> setPrintHeader(false);
+        $pdf->setPrintHeader(false);
 
-$pdf -> AddPage();
+        $pdf->AddPage();
 
-$link = $_SERVER['REQUEST_URI'];
+        $link = $_SERVER['REQUEST_URI'];
 
-$exp = explode("/", $link);
+        $exp = explode("/", $link);
 
-$columna = "id";
+        $columna = "id";
 
-$valor = $exp[5];
+        $valor = $exp[5];
 
-$materia = CoursesC::ViewCoursesC($columna,$valor);
+        $materia = CoursesC::ViewCoursesC($columna, $valor);
 
-$columna = "id";
+        $columna = "id";
 
-$valor = $exp[6];
-$row = "Null";
-$comision = CoursesC::ViewCommissionsC($columna,$valor, $row);
+        $valor = $exp[6];
+        $row = "Null";
+        $comision = CoursesC::ViewCommissionsC($columna, $valor, $row);
 
-$html = <<<EOF
+        $html = <<<EOF
     
 <center><img src="images/logo.png"></center>
 	<br><br>
@@ -55,30 +57,30 @@ $html = <<<EOF
 
 EOF;
 
-$pdf -> writeHTML($html, false, false,false,false, '');
-    $columna = "id_materia";
-    $valor = $exp[5];
-    $row = "Null";
-    $inscriptos = CoursesC::SeeQuotaC($columna, $valor, $row);
+        $pdf->writeHTML($html, false, false, false, false, '');
+        $columna = "id_materia";
+        $valor = $exp[5];
+        $row = "Null";
+        $inscriptos = CoursesC::SeeQuotaC($columna, $valor, $row);
 
 
-    foreach ($inscriptos as $key => $value) {
+        foreach ($inscriptos as $key => $value) {
 
-        $columna = "id";
-        $valor = $value["id_alumno"];
+            $columna = "id";
+            $valor = $value["id_alumno"];
 
-        $alumnos = UsersC::GetUsersC2($columna, $valor);
+            $alumnos = UsersC::GetUsersC2($columna, $valor);
 
-        foreach ($alumnos as $key => $v) {
+            foreach ($alumnos as $key => $v) {
 
-            if($value["id_comision"] == $exp[6]){
+                if ($value["id_comision"] == $exp[6]) {
 
-                $columna = "id";
-                $valor = $exp[6];
-                $row = 1;
-                $comision = CoursesC::ViewCommissionsC($columna, $valor, $row);
+                    $columna = "id";
+                    $valor = $exp[6];
+                    $row = 1;
+                    $comision = CoursesC::ViewCommissionsC($columna, $valor, $row);
 
-                $html2 = <<<EOF
+                    $html2 = <<<EOF
 
 	<table style="border: 1px solid black; text-align:center; font-size:15px">
 
@@ -95,14 +97,15 @@ $pdf -> writeHTML($html, false, false,false,false, '');
 EOF;
 
 
-$pdf -> writeHTML($html2, false, false,false,false, '');
+                    $pdf->writeHTML($html2, false, false, false, false, '');
 
+                }
+            }
         }
+
+        $pdf->Output('Insc-Comision-' . $comision["numero"] . '-' . $materia["nombre"] . '.pdf');
     }
 }
 
-$pdf->Output('Insc-Comision-'.$comision["numero"].'-'.$materia["nombre"].'.pdf');
-}
-}
 $a = new pdfCourseEnrolled();
-$a -> pdfEnrolled();
+$a->pdfEnrolled();
