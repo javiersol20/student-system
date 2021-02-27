@@ -53,8 +53,10 @@ if($_SESSION["rol"] != "Administrador")
                                     <td>'.$value["horario"].'</td>
 
                                     <td>
+                                      <a href="http://localhost/project-01/tcpdf/pdf/Inscritos-Materia.php/'.$exp[1].'/'.$value["id"].'">
                                         <button class="btn btn-primary">Generar PDF</button>
-                                      <a href="http://localhost/project-01/index.php?url=Crear-Comisiones/'.$exp[1].'&Mid='.$exp[1].'&Cid='.$value["id"].'">
+                                      </a>
+                                      <a href="http://localhost/project-01/index.php?url=Crear-Comisiones/'.$exp[1].'&Mid='.$exp[1].'&Cid='.$value["id"].'" target="_blank">
                                         <button class="btn btn-danger">Eliminar</button>
                                       </a>
                                     </td>

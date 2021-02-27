@@ -56,7 +56,8 @@ if (isset($_SESSION["Ingresar"]) && $_SESSION["Ingresar"] == true) {
         if ($url[0] == "inicio" || $url[0] == "logout" || $url[0] == "mi-perfil" || $url[0] == "Carreras" || $url[0] == "Editar-Carrera" || $url[0] == "Users"
             || $url[0] == "Estudiantes" || $url[0] == "Editar-inicio" || $url[0] == "Crear-Materias" || $url[0] == "Crear-Comisiones" || $url[0] == "Ver-Plan"
         || $url[0] == "Nota-Materia" || $url[0] == "Editar-Nota" || $url[0] == "Plan-de-Estudios" || $url[0] == "Materias" || $url[0] == "insc-materia"
-        || $url[0] == "inscripciones-M") {
+        || $url[0] == "inscripciones-M" || $url[0] == "Examanes" || $url[0] == "Crear-Examenes" || $url[0] == "C-E" || $url[0] == "Ver-Examenes" || $url[0] == "insc-examen"
+        || $url[0] == "Inscriptos-examen") {
             include "modules/" . $url[0] . ".php";
         }
 

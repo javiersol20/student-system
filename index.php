@@ -14,5 +14,8 @@ require_once "Models/settingsM.php";
 require_once "Controllers/coursesC.php";
 require_once "Models/coursesM.php";
 
+require_once "Controllers/examsC.php";
+require_once "Models/examsM.php";
+
 $template = new Template();
 $template->callTemplate();

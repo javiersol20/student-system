@@ -45,4 +45,49 @@ class SettingsC
             }
         }
     }
+    public function EnableCoursesC()
+    {
+        if(isset($_POST["h_materias"]))
+        {
+            $tablaBD = "ajustes";
+            $datosC = [
+                "id" => 1,
+                "h_materias" => $_POST["h_materias"]
+            ];
+            $resultado = SettingsM::EnableCoursesM($tablaBD,$datosC);
+            if($resultado == true)
+            {
+                echo '<script> window.location = "Carreras"; </script>';
+            }
+        }
+    }
+    public function DisableCourseC()
+    {
+        if(isset($_POST["h_materias"]))
+        {
+            $tablaBD = "ajustes";
+            $datosC = [
+                "id" => 1,
+                "h_materias" => $_POST["h_materias"]
+            ];
+            $resultado = SettingsM::DisableCourseM($tablaBD,$datosC);
+            if($resultado == true)
+            {
+                echo '<script> window.location = "Carreras"; </script>';
+            }
+        }
+    }
+    public function DeleteCoursesC()
+    {
+        if(isset($_POST["E"]))
+        {
+            $tablaBD = "insc_materias	";
+            $respuesta = SettingsM::DeleteCoursesM($tablaBD);
+            if($respuesta == true)
+            {
+                echo '<script> window.location = "Carreras"; </script>';
+
+            }
+        }
+    }
 }

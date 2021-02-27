@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 $exp = explode("/", $_GET["url"]);
 if($_SESSION["id_carrera"] != $exp[1])
 {
@@ -45,20 +47,25 @@ foreach ($ins as $key => $m)
                             <h2>Tipo: '.$materia["tipo"].'</h2>
                             <p>Solo se podra inscribir a una comision por unica vez</p>';
                     $columna = "id_materia";
-                    $valor = $exp[1];
+                    $valor = $exp[2];
 
-                    $comisiones = CoursesC::ViewCommissionsC($columna,$valor);
+                    $comisiones = CoursesC::ViewCommissionsC($columna,$valor );
+
                     foreach ($comisiones as $key => $value)
                     {
                         $columna = "id_comision";
                         $valor = $value["id"];
                         $insc = CoursesC::SeeQuotaC($columna,$valor);
-                        if(count($insc) < $value["c_maxima"])
-                        {
-                            $lugares = ($value["c_maxima"] - count($insc));
-                            echo '<input type="radio" name="id_comision" required value="'.$value["id"].'"> '.$value["dias"].' - '.$value["horario"].' - Lugares '.$lugares.'';
+                        $contador = count($insc);
 
-                        }
+                            if(!empty($contador) && $contador < $value["c_maxima"])
+                            {
+                                $lugares = ($value["c_maxima"] - count($insc));
+                                echo '<input type="radio" name="id_comision" required value="'.$value["id"].'"> '.$value["dias"].' - '.$value["horario"].' - Lugares '.$lugares.'<br>';
+
+                            }
+
+
 
                     }
                     ?>

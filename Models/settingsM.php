@@ -44,4 +44,38 @@ class SettingsM extends ConnectionDB
         $pdo -> close();
         $pdo = null;
     }
+    static public function EnableCoursesM($tablaBD,$datosC)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("UPDATE $tablaBD SET h_materias = :h_materias WHERE id = :id");
+        $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+        $pdo->bindParam(":h_materias", $datosC["h_materias"], PDO::PARAM_INT);
+        if($pdo->execute())
+        {
+            return true;
+        }
+        $pdo -> close();
+        $pdo = null;
+    }
+    static public function DisableCourseM($tablaBD,$datosC)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("UPDATE $tablaBD SET h_materias = :h_materias WHERE id = :id");
+        $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+        $pdo->bindParam(":h_materias", $datosC["h_materias"], PDO::PARAM_INT);
+        if($pdo->execute())
+        {
+            return true;
+        }
+        $pdo -> close();
+        $pdo = null;
+    }
+    static public function DeleteCoursesM($tablaBD)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("DELETE FROM $tablaBD");
+        if($pdo->execute())
+        {
+            return true;
+        }
+        $pdo -> close();
+        $pdo = null;
+    }
 }

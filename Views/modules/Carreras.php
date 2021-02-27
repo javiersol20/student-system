@@ -47,6 +47,25 @@ if ($_SESSION["rol"] != "Administrador") {
                     $crearCarrera->CreateCareersC();
 
                     ?>
+                    <br>
+                    <?php
+
+                    $columna = "id";
+                    $valor = 1;
+
+                    $resultado = SettingsC::ViewSettingC($columna,$valor);
+
+                    if($resultado["h_materias"] == 0)
+                    {
+                        echo '<button class="btn btn-success" type="submit" data-toggle="modal" data-target="#HM">Habilitar Inscripciones a Materias</button>';
+
+                    }else{
+                        echo '<button class="btn btn-warning" type="submit" data-toggle="modal" data-target="#DM">Deshabilitar Inscripciones a Materias</button>';
+
+                    }
+
+                    ?>
+                    <button class="btn btn-danger pull-right" type="submit" data-toggle="modal" data-target="#VaciarRegistrosMaterias">Vaciar Registros de Inscripciones a las Materias</button>
 
                 </div>
 
@@ -130,6 +149,145 @@ if ($_SESSION["rol"] != "Administrador") {
             </div>
 
         </section>
+
+    </div>
+
+    <div class="modal fade" id="HM">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <form method="post">
+
+                    <div class="modal-body">
+
+                        <div class="box-body">
+
+                            <div class="form-group">
+
+                                <h2>¿Está seguro que desea Habilitar las Inscripciones a las Materias?</h2>
+
+                                <input type="hidden" name="h_materias" value="1">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+                    </div>
+
+                    <?php
+
+                    $habilitar = new SettingsC();
+                    $habilitar -> EnableCoursesC();
+
+                    ?>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="DM">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <form method="post">
+
+                    <div class="modal-body">
+
+                        <div class="box-body">
+
+                            <div class="form-group">
+
+                                <h2>¿Está seguro que desea Deshabilitar las Inscripciones a las Materias?</h2>
+
+                                <input type="hidden" name="h_materias" value="0">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+                    </div>
+
+                    <?php
+
+                    $inhabilitar = new SettingsC();
+                    $inhabilitar -> DisableCourseC();
+
+                    ?>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="VaciarRegistrosMaterias">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <form method="post">
+
+                    <div class="modal-body">
+
+                        <div class="box-body">
+
+                            <div class="form-group">
+
+                                <h2>¿Está seguro que desea Eliminar todas las Inscripciones a las Materias?</h2>
+
+                                <input type="hidden" name="E" value="E">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+                    </div>
+
+                    <?php
+
+                    $delete = new SettingsC();
+                    $delete -> DeleteCoursesC();
+
+                    ?>
+
+                </form>
+
+            </div>
+
+        </div>
 
     </div>
 

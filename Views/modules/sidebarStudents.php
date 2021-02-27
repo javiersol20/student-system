@@ -24,7 +24,10 @@
             </li>
 
             <li>
-                <a href="http://localhost/project-01/Ver-Examenes">
+                <?php
+                echo '<a href="http://localhost/project-01/Ver-Examenes/'.$_SESSION["id_carrera"].'">';
+                ?>
+
                     <i class="fa fa-home"></i>
                     <span>Éxamenes</span>
                 </a>

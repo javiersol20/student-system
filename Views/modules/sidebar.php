@@ -23,7 +23,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="http://localhost/project-01/Examanes">
                     <i class="fa fa-home"></i>
                     <span>Examenes</span>
                 </a>

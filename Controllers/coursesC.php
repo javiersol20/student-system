@@ -247,4 +247,22 @@ class CoursesC
         $resultado = CoursesM::SeeQuotaM($tablaBD,$columna,$valor,$row);
         return $resultado;
     }
+    public function RemoveRegistrationC()
+    {
+
+        $exp = explode("/", $_GET["url"]);
+        $id = $exp[3];
+        if(isset($id))
+        {
+            $tablaBD = "insc_materias";
+            $resultado = CoursesM::RemoveRegistrationM($tablaBD,$id);
+            if($resultado == true)
+            {
+                echo '<script>
+
+					window.location = "http://localhost/project-01/Materias";
+					</script>';
+            }
+        }
+    }
 }

@@ -188,4 +188,15 @@ class CoursesM extends ConnectionDB
         $pdo->close();
         $pdo = null;
     }
+    static public function RemoveRegistrationM($tablaBD,$id)
+    {
+        $pdo = ConnectionDB::cDB()->prepare("DELETE FROM $tablaBD WHERE id = :id");
+        $pdo->bindParam(":id", $id, PDO::PARAM_INT);
+        if($pdo->execute())
+        {
+            return true;
+        }
+        $pdo -> close();
+        $pdo = null;
+    }
 }

@@ -146,6 +146,12 @@ class UsersC
         $respuesta = UsersM::GetUsersM($tablaBD1, $tablaBD2, $columna, $valor);
         return $respuesta;
     }
+    static public function GetUsersC2($columna,$valor)
+    {
+        $tablaBD1 = "usuarios";
+        $respuesta = UsersM::GetUsersM2($tablaBD1, $columna, $valor);
+        return $respuesta;
+    }
 
     public function UpdateUserC()
     {
